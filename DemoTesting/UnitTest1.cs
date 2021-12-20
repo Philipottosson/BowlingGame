@@ -197,7 +197,7 @@ namespace DemoTesting
                 bowlingGame.roll(1);
                 bowlingGame.roll(1);
 
-                bowlingGame.roll(10); 
+                bowlingGame.roll(10);
 
                 bowlingGame.roll(4);
                 bowlingGame.roll(6);
@@ -205,6 +205,12 @@ namespace DemoTesting
                 bowlingGame.roll(5);
             });
 
+        }
+        [Fact]
+        public void TestIfElevenPinsHit() {
+            Game bowlingGame = new Game();
+
+            Assert.Throws<ArgumentException>(() => bowlingGame.roll(11));
         }
     }
 }
