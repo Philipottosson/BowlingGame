@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using Xunit;
@@ -120,6 +121,7 @@ namespace DemoTesting
             Assert.Equal(60, bowlingGame.Score());
 
         }
+
         [Fact]
         public void TestForStrikeAtFrameTen()
         {
@@ -158,6 +160,49 @@ namespace DemoTesting
             bowlingGame.roll(6);
 
             Assert.Equal(38, bowlingGame.Score());
+
+        }
+        [Fact]
+
+        public void TestForFrameEleven()
+        {
+            Game bowlingGame = new Game();
+
+            bowlingGame.roll(1);
+            bowlingGame.roll(1);
+
+            bowlingGame.roll(1);
+            bowlingGame.roll(1);
+
+            bowlingGame.roll(1);
+            bowlingGame.roll(1);
+
+            bowlingGame.roll(1);
+            bowlingGame.roll(1);
+
+            bowlingGame.roll(1);
+            bowlingGame.roll(1);
+
+            bowlingGame.roll(1);
+            bowlingGame.roll(1);
+
+            bowlingGame.roll(1);
+            bowlingGame.roll(1);
+
+            bowlingGame.roll(1);
+            bowlingGame.roll(1);
+
+            bowlingGame.roll(1);
+            bowlingGame.roll(1);
+
+            bowlingGame.roll(10); //28
+
+            bowlingGame.roll(4);
+            bowlingGame.roll(6);
+
+            bowlingGame.roll(5);
+            
+            Assert.Throws<ArgumentException>(() => bowlingGame.roll(5));
 
         }
     }
