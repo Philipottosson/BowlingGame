@@ -21,6 +21,13 @@ namespace DemoTesting
             Assert.Equal(5,bowlingGame.Score() );
         }
 
+        public void Roll_Game()
+        {
+            Game bowlingGame = new Game();
+            bowlingGame.roll(2);
+            bowlingGame.roll(3);
+            Assert.Equal(60,bowlingGame.Score());
+        }
 
         [Fact]
         public void Create_()
