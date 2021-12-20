@@ -213,7 +213,7 @@ namespace DemoTesting
             Assert.Throws<ArgumentException>(() => bowlingGame.roll(11));
         }
         [Fact]
-        public void TestIfElevenPinsHitOntwoFrames()
+        public void TestIfElevenPinsHitOnTwoFrames()
         {
             Game bowlingGame = new Game();
 
