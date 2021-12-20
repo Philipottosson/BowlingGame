@@ -27,35 +27,7 @@ namespace DemoTesting
         {
             Game bowlingGame = new Game();
 
-            bowlingGame.Roll(1);
-            bowlingGame.Roll(1);
-
-            bowlingGame.Roll(1);
-            bowlingGame.Roll(1);
-
-            bowlingGame.Roll(1);
-            bowlingGame.Roll(1);
-
-            bowlingGame.Roll(1);
-            bowlingGame.Roll(1);
-
-            bowlingGame.Roll(1);
-            bowlingGame.Roll(1);
-
-            bowlingGame.Roll(1);
-            bowlingGame.Roll(1);
-
-            bowlingGame.Roll(1);
-            bowlingGame.Roll(1);
-
-            bowlingGame.Roll(1);
-            bowlingGame.Roll(1);
-
-            bowlingGame.Roll(1);
-            bowlingGame.Roll(1);
-
-            bowlingGame.Roll(1);
-            bowlingGame.Roll(1);
+            RollWithOnePin(bowlingGame, 20);
 
             Assert.Equal(20,bowlingGame.Score());
         }
@@ -86,39 +58,14 @@ namespace DemoTesting
         {
             Game bowlingGame = new Game();
 
-            bowlingGame.Roll(2);
-            bowlingGame.Roll(3);
-
-            bowlingGame.Roll(2);
-            bowlingGame.Roll(3);
-
-            bowlingGame.Roll(2);
-            bowlingGame.Roll(3);
-
-            bowlingGame.Roll(2);
-            bowlingGame.Roll(3);
-
-            bowlingGame.Roll(2);
-            bowlingGame.Roll(3);
-
-            bowlingGame.Roll(2);
-            bowlingGame.Roll(3);
-
-            bowlingGame.Roll(2);
-            bowlingGame.Roll(3);
-
-            bowlingGame.Roll(2);
-            bowlingGame.Roll(3);
-
-            bowlingGame.Roll(2);
-            bowlingGame.Roll(3);
+            RollWithOnePin(bowlingGame, 18);
 
             bowlingGame.Roll(2);
             bowlingGame.Roll(8);
 
             bowlingGame.Roll(5);
 
-            Assert.Equal(60, bowlingGame.Score());
+            Assert.Equal(33, bowlingGame.Score());
 
         }
 
@@ -127,32 +74,7 @@ namespace DemoTesting
         {
             Game bowlingGame = new Game();
 
-            bowlingGame.Roll(1);
-            bowlingGame.Roll(1);
-
-            bowlingGame.Roll(1);
-            bowlingGame.Roll(1);
-
-            bowlingGame.Roll(1);
-            bowlingGame.Roll(1);
-
-            bowlingGame.Roll(1);
-            bowlingGame.Roll(1);
-
-            bowlingGame.Roll(1);
-            bowlingGame.Roll(1);
-
-            bowlingGame.Roll(1);
-            bowlingGame.Roll(1);
-
-            bowlingGame.Roll(1);
-            bowlingGame.Roll(1);
-
-            bowlingGame.Roll(1);
-            bowlingGame.Roll(1);
-
-            bowlingGame.Roll(1);
-            bowlingGame.Roll(1);
+            RollWithOnePin(bowlingGame,18);
 
             bowlingGame.Roll(10); 
 
@@ -170,42 +92,28 @@ namespace DemoTesting
 
             Assert.Throws<ArgumentException>(() =>
             {
-                bowlingGame.Roll(1);
-                bowlingGame.Roll(1);
 
-                bowlingGame.Roll(1);
-                bowlingGame.Roll(1);
+                RollWithOnePin(bowlingGame, 18);
+               
 
-                bowlingGame.Roll(1);
-                bowlingGame.Roll(1);
+                bowlingGame.Roll(10); 
 
-                bowlingGame.Roll(1);
-                bowlingGame.Roll(1);
-
-                bowlingGame.Roll(1);
-                bowlingGame.Roll(1);
-
-                bowlingGame.Roll(1);
-                bowlingGame.Roll(1);
-
-                bowlingGame.Roll(1);
-                bowlingGame.Roll(1);
-
-                bowlingGame.Roll(1);
-                bowlingGame.Roll(1);
-
-                bowlingGame.Roll(1);
-                bowlingGame.Roll(1);
-
-                bowlingGame.Roll(10);
-
-                bowlingGame.Roll(4);
-                bowlingGame.Roll(6);
+                bowlingGame.Roll(4); 
+                bowlingGame.Roll(6); 
 
                 bowlingGame.Roll(5);
             });
 
         }
+
+        private static void RollWithOnePin(Game bowlingGame, int rolls)
+        {
+            for (int j = 0; j < rolls; j++)
+            {
+                bowlingGame.Roll(1);
+            }
+        }
+
         [Fact]
         public void TestIfElevenPinsHit() {
             Game bowlingGame = new Game();

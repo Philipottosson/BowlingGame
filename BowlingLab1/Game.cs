@@ -1,6 +1,4 @@
-﻿using Microsoft.VisualBasic.CompilerServices;
-
-namespace BowlingLab1
+﻿namespace BowlingLab1
 {
     public class Game
     {
@@ -83,43 +81,17 @@ namespace BowlingLab1
         {
             _nrThrow += 1;
             _pinsLeft -= _pinsDown;
+            CountBonuses();
+        }
+
+        private void CountBonuses()
+        {
             if (_countBonus > 0)
             {
                 _score += (_pinsDown * 2);
                 _countBonus -= 1;
-
             }
             else _score += _pinsDown;
         }
     }
 }
-/*
- * Frames => 10
- * Pins => 10
- * ShotsPerRound => 1-2
- * ShotsLastRound => 2-3
- * Points for X => 10 + 0-20
- * Points for / => 10 + 0-10
- */
-
-/*
-Bowling Rules
-The game consists of 10 frames. In each frame the player has two rolls to knock down 10 pins. 
-The score for the frame is the total number of pins knocked down, plus bonuses for strikes and spares.
-
-A spare is when the player knocks down all 10 pins in two rolls. The bonus for that frame is the number of pins knocked down by the next roll.
-
-A strike is when the player knocks down all 10 pins on his first roll. 
-The frame is then completed with a single roll. 
-The bonus for that frame is the value of the next two rolls.
-
-In the tenth frame a player who rolls a spare or strike is allowed to roll the extra balls to complete the frame. 
-However no more than three balls can be rolled in tenth frame.
-
-Requirements
-Write a class Game that has two methods
-
-void roll(int) is called each time the player rolls a ball. 
-The argument is the number of pins knocked down.
-int score() returns the total score for that game.
-*/
