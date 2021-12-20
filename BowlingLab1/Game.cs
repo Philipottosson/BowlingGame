@@ -2,34 +2,19 @@
 
 namespace BowlingLab1
 {
-    /*public class Players
-    {
-        public string Name { get; set; }
-        public int Points { get; set; }
-        public int PinsLeft { get; set; }
-        public int Frames { get; set; }
-
-        public Players(string name)
-        {
-            this.Name = name;
-            Points = 0;
-            PinsLeft = 10;
-            Frames = 0;
-        }
-    }*/
     public class Game
     {
-        private int pinsLeft = 10;
-        private int pinsDown;
-        private int score;
-        private int nr_throw = 0;
-        private int frames = 1;
-        private int countBonus;
+        private int _pinsLeft = 10;
+        private int _pinsDown;
+        private int _score;
+        private int _nrThrow = 0;
+        private int _frames = 1;
+        private int _countBonus;
 
-        public void roll(int pins)
+        public void Roll(int pins)
         {
-            pinsDown = pins;
-            if (pinsDown > pinsLeft || frames >= 12)
+            _pinsDown = pins;
+            if (_pinsDown > _pinsLeft || _frames >= 12)
             {
                 throw new ArgumentException();
             }
@@ -43,7 +28,7 @@ namespace BowlingLab1
         {
             if (CheckIfStrike())
             {
-                Strike(); //Kolla om det är strike.
+                Strike(); 
             }
             else if (CheckIfSpare())
             {
@@ -51,62 +36,60 @@ namespace BowlingLab1
             }
             else if (NoBonusLastFrame())
             {
-                countBonus = 0;
+                _countBonus = 0;
             }
         }
 
         private bool NoBonusLastFrame()
         {
-            return frames >= 9;
+            return _frames >= 9;
         }
 
         private bool CheckIfSpare()
         {
-            return pinsLeft == 0 && nr_throw == 2 && frames <= 9;
+            return _pinsLeft == 0 && _nrThrow == 2 && _frames <= 9;
         }
 
         private bool CheckIfStrike()
         {
-            return pinsLeft == 0 && nr_throw == 1 && frames <= 9;
+            return _pinsLeft == 0 && _nrThrow == 1 && _frames <= 9;
         }
 
         private void Spare()
         {
-            countBonus += 1;
+            _countBonus += 1;
         }
 
         private void Strike()
         { 
-            countBonus += 2;
+            _countBonus += 2;
         }
 
         private void Reset()
         {
-            if (nr_throw == 2 || pinsLeft == 0)
-            {
-                nr_throw = 0;
-                pinsLeft = 10;
-                frames++;
-            }
+            if (_nrThrow != 2 && _pinsLeft != 0) return;
+            _nrThrow = 0;
+            _pinsLeft = 10;
+            _frames++;
         }
 
         public int Score()
         {
-            return score;
+            return _score;
         }
 
 
         private void ScoreCount()
         {
-            nr_throw += 1;
-            pinsLeft -= pinsDown;
-            if (countBonus > 0)
+            _nrThrow += 1;
+            _pinsLeft -= _pinsDown;
+            if (_countBonus > 0)
             {
-                score += (pinsDown * 2);
-                countBonus -= 1;
+                _score += (_pinsDown * 2);
+                _countBonus -= 1;
 
             }
-            else score += pinsDown;
+            else _score += _pinsDown;
         }
     }
 }
