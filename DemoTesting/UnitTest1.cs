@@ -21,6 +21,7 @@ namespace DemoTesting
             Assert.Equal(5,bowlingGame.Score() );
         }
 
+        [Fact]
         public void Roll_Game()
         {
             Game bowlingGame = new Game();
@@ -57,7 +58,7 @@ namespace DemoTesting
 
             Assert.Equal(50,bowlingGame.Score());
         }
-        [TestMethod]
+        [Fact]
         public void SpareTest()
         {
             Game bowlingGame = new Game();
@@ -69,14 +70,14 @@ namespace DemoTesting
             Assert.Equal(16, bowlingGame.Score());
         }
 
-        [TestMethod]
+        [Fact]
         public void StrikeTest()
         {
             Game bowlingGame = new Game();
             bowlingGame.roll(10);
             bowlingGame.roll(4);
             bowlingGame.roll(4);
-            Asset.Equal(26, bowlingGame.Score());
+            Assert.Equal(26, bowlingGame.Score());
         }
 
         [Fact]
