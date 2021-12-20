@@ -44,9 +44,13 @@ namespace BowlingLab1
             {
                 Strike(); //Kolla om det är strike.
             }
-            else
+            else if (pinsLeft == 0 && nr_throw == 2 && frames <= 9)
             {
                 Spare();
+            }
+            else if(frames >= 9)
+            {
+                countBonus = 0;
             }
         }
 

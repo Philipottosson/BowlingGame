@@ -160,14 +160,6 @@ namespace DemoTesting
             Assert.Equal(38, bowlingGame.Score());
 
         }
-
-        [Fact]
-        public void Create_()
-        {
-
-
-        }
-
     }
 }
     
