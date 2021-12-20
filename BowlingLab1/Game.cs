@@ -19,28 +19,28 @@ namespace BowlingLab1
     }*/
     public class Game
     {
-        private int rolled;
         private int pinsLeft = 10;
         private int pinsDown;
         private int score;
         private int nr_throw = 0;
         private int frames = 1;
         private int countBonus;
-        private bool spare = false;
-        private bool strike = false;
-
 
         public void roll(int pins)
         {
-            nr_throw += 1; 
             pinsDown = pins;
-            pinsLeft -= pins;
-            if (pins > pinsLeft)
+            if (pinsDown > pinsLeft)
             {
                 throw new ArgumentException();
             }
+            ScoreCount();
+            StrikeOrSpare();
+            Reset();
+        }
 
-            else if (pinsLeft == 10 && nr_throw < 2)
+        private void StrikeOrSpare()
+        {
+            if (pinsLeft == 0 && nr_throw == 1)
             {
                 Strike(); //Kolla om det är strike.
             }
@@ -48,16 +48,13 @@ namespace BowlingLab1
             {
                 Spare();
             }
-            ScoreCount();
         }
 
         private void Spare()
         {
             if (pinsLeft == 0)
             {
-                spare = true;
                 countBonus += 1;
-                
             }
         }
 
@@ -65,35 +62,37 @@ namespace BowlingLab1
         {
             if (pinsLeft == 0)
             {
-                strike = true;
                 countBonus += 2;
-                
             }
         }
 
+        private void Reset()
+        {
+            if (nr_throw == 2 || pinsLeft == 0)
+            {
+                nr_throw = 0;
+                pinsLeft = 10;
+                frames++;
+            }
+        }
 
         public int Score()
         {
             return score;
         }
 
-        private void Reset()
-        {
-            nr_throw = 0;
-            pinsLeft = 10;
-            strike = false;
-            spare = false;
-        }
 
         private void ScoreCount()
         {
+            nr_throw += 1;
+            pinsLeft -= pinsDown;
             if (countBonus > 0)
             {
                 score += (pinsDown * 2);
+                countBonus -= 1;
 
             }
             else score += pinsDown;
-            Reset();
         }
     }
 }
