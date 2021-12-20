@@ -58,14 +58,15 @@ namespace DemoTesting
 
             Assert.Equal(50,bowlingGame.Score());
         }
+
         [Fact]
         public void SpareTest()
         {
             Game bowlingGame = new Game();
             bowlingGame.roll(2);
-            bowlingGame.roll(8);
-            bowlingGame.roll(2);
-            bowlingGame.roll(2);
+            bowlingGame.roll(8); //10 + countBonus += 1
+            bowlingGame.roll(2); // 2 * 2 14
+            bowlingGame.roll(2); // 16
 
             Assert.Equal(16, bowlingGame.Score());
         }
@@ -74,9 +75,9 @@ namespace DemoTesting
         public void StrikeTest()
         {
             Game bowlingGame = new Game();
-            bowlingGame.roll(10);
-            bowlingGame.roll(4);
-            bowlingGame.roll(4);
+            bowlingGame.roll(10); //10 + countBonus +=2
+            bowlingGame.roll(4); // 4 * 2 = 8
+            bowlingGame.roll(4); // 4 * 2 = 8
             Assert.Equal(26, bowlingGame.Score());
         }
 

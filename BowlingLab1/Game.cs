@@ -25,14 +25,16 @@ namespace BowlingLab1
         private int score;
         private int nr_throw = 0;
         private int frames = 1;
-        private int countForBonus;
+        private int countBonus;
         private bool spare = false;
         private bool strike = false;
 
 
         public void roll(int pins)
         {
-            nr_throw += 1;
+            nr_throw += 1; 
+            pinsDown = pins;
+            pinsLeft -= pins;
             if (pins > pinsLeft)
             {
                 throw new ArgumentException();
@@ -40,16 +42,13 @@ namespace BowlingLab1
 
             else if (pinsLeft == 10 && nr_throw < 2)
             {
-                pinsDown += pins;
-                pinsLeft -= pins;
                 Strike(); //Kolla om det är strike.
             }
             else
             {
-                pinsLeft -= pins;
-                pinsDown += pins;
                 Spare();
             }
+            ScoreCount();
         }
 
         private void Spare()
@@ -57,8 +56,8 @@ namespace BowlingLab1
             if (pinsLeft == 0)
             {
                 spare = true;
-                countForBonus += 1;
-                Reset();
+                countBonus += 1;
+                
             }
         }
 
@@ -67,25 +66,34 @@ namespace BowlingLab1
             if (pinsLeft == 0)
             {
                 strike = true;
-                countForBonus += 2;
-                Reset();
+                countBonus += 2;
+                
             }
         }
 
 
         public int Score()
         {
-            score =+ pinsDown;
             return score;
         }
 
         private void Reset()
         {
             nr_throw = 0;
-            pinsLeft = 0;
-            pinsDown = 0;
+            pinsLeft = 10;
             strike = false;
             spare = false;
+        }
+
+        private void ScoreCount()
+        {
+            if (countBonus > 0)
+            {
+                score += (pinsDown * 2);
+
+            }
+            else score += pinsDown;
+            Reset();
         }
     }
 }
