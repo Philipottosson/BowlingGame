@@ -20,31 +20,34 @@ namespace BowlingLab1
     public class Game
     {
         private int rolled;
-        private int pinsLeft;
+        private int pinsLeft = 10;
         private int pinsDown;
-        private List<int> score = new List<int>();
+        private int score;
+        private int nr_throw = 0;
         private int frames = 1;
-        private bool spare;
-        private bool strike;
         private int countForBonus;
-
-
+        private bool spare = false;
+        private bool strike = false;
 
 
         public void roll(int pins)
         {
+            nr_throw += 1;
             if (pins > pinsLeft)
             {
                 throw new ArgumentException();
             }
-            else if (pinsLeft == 10)
+
+            else if (pinsLeft == 10 && nr_throw < 2)
             {
+                pinsDown += pins;
                 pinsLeft -= pins;
-                Strike();
+                Strike(); //Kolla om det är strike.
             }
             else
             {
                 pinsLeft -= pins;
+                pinsDown += pins;
                 Spare();
             }
         }
@@ -55,6 +58,7 @@ namespace BowlingLab1
             {
                 spare = true;
                 countForBonus += 1;
+                Reset();
             }
         }
 
@@ -64,21 +68,25 @@ namespace BowlingLab1
             {
                 strike = true;
                 countForBonus += 2;
+                Reset();
             }
         }
 
 
         public int Score()
         {
-
-            int total = 0;
-            foreach (var points in score )
-            {
-                total += points;
-            }
-            return total;
+            score =+ pinsDown;
+            return score;
         }
-    
+
+        private void Reset()
+        {
+            nr_throw = 0;
+            pinsLeft = 0;
+            pinsDown = 0;
+            strike = false;
+            spare = false;
+        }
     }
 }
 /*
