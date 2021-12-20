@@ -41,18 +41,33 @@ namespace BowlingLab1
 
         private void StrikeOrSpare()
         {
-            if (pinsLeft == 0 && nr_throw == 1 && frames <= 9)
+            if (CheckIfStrike())
             {
                 Strike(); //Kolla om det är strike.
             }
-            else if (pinsLeft == 0 && nr_throw == 2 && frames <= 9)
+            else if (CheckIfSpare())
             {
                 Spare();
             }
-            else if(frames >= 9)
+            else if (NoBonusLastFrame())
             {
                 countBonus = 0;
             }
+        }
+
+        private bool NoBonusLastFrame()
+        {
+            return frames >= 9;
+        }
+
+        private bool CheckIfSpare()
+        {
+            return pinsLeft == 0 && nr_throw == 2 && frames <= 9;
+        }
+
+        private bool CheckIfStrike()
+        {
+            return pinsLeft == 0 && nr_throw == 1 && frames <= 9;
         }
 
         private void Spare()
