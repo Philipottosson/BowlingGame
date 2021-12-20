@@ -40,7 +40,7 @@ namespace BowlingLab1
 
         private void StrikeOrSpare()
         {
-            if (pinsLeft == 0 && nr_throw == 1)
+            if (pinsLeft == 0 && nr_throw == 1 && frames <= 9)
             {
                 Strike(); //Kolla om det är strike.
             }
@@ -52,18 +52,12 @@ namespace BowlingLab1
 
         private void Spare()
         {
-            if (pinsLeft == 0)
-            {
-                countBonus += 1;
-            }
+            countBonus += 1;
         }
 
         private void Strike()
-        {
-            if (pinsLeft == 0)
-            {
-                countBonus += 2;
-            }
+        { 
+            countBonus += 2;
         }
 
         private void Reset()

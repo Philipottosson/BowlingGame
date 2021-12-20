@@ -26,37 +26,37 @@ namespace DemoTesting
         {
             Game bowlingGame = new Game();
 
-            bowlingGame.roll(2);
-            bowlingGame.roll(3);
+            bowlingGame.roll(1);
+            bowlingGame.roll(1);
 
-            bowlingGame.roll(2);
-            bowlingGame.roll(3);
+            bowlingGame.roll(1);
+            bowlingGame.roll(1);
 
-            bowlingGame.roll(2);
-            bowlingGame.roll(3);
+            bowlingGame.roll(1);
+            bowlingGame.roll(1);
 
-            bowlingGame.roll(2);
-            bowlingGame.roll(3);
+            bowlingGame.roll(1);
+            bowlingGame.roll(1);
 
-            bowlingGame.roll(2);
-            bowlingGame.roll(3);
+            bowlingGame.roll(1);
+            bowlingGame.roll(1);
 
-            bowlingGame.roll(2);
-            bowlingGame.roll(3);
+            bowlingGame.roll(1);
+            bowlingGame.roll(1);
 
-            bowlingGame.roll(2);
-            bowlingGame.roll(3);
+            bowlingGame.roll(1);
+            bowlingGame.roll(1);
 
-            bowlingGame.roll(2);
-            bowlingGame.roll(3);
+            bowlingGame.roll(1);
+            bowlingGame.roll(1);
 
-            bowlingGame.roll(2);
-            bowlingGame.roll(3);
+            bowlingGame.roll(1);
+            bowlingGame.roll(1);
 
-            bowlingGame.roll(2);
-            bowlingGame.roll(3);
+            bowlingGame.roll(1);
+            bowlingGame.roll(1);
 
-            Assert.Equal(50,bowlingGame.Score());
+            Assert.Equal(20,bowlingGame.Score());
         }
 
         [Fact]
@@ -79,6 +79,86 @@ namespace DemoTesting
             bowlingGame.roll(4); // 4 * 2 = 8
             bowlingGame.roll(4); // 4 * 2 = 8
             Assert.Equal(26, bowlingGame.Score());
+        }
+        [Fact]
+        public void TestForSpareAtFrameTen()
+        {
+            Game bowlingGame = new Game();
+
+            bowlingGame.roll(2);
+            bowlingGame.roll(3);
+
+            bowlingGame.roll(2);
+            bowlingGame.roll(3);
+
+            bowlingGame.roll(2);
+            bowlingGame.roll(3);
+
+            bowlingGame.roll(2);
+            bowlingGame.roll(3);
+
+            bowlingGame.roll(2);
+            bowlingGame.roll(3);
+
+            bowlingGame.roll(2);
+            bowlingGame.roll(3);
+
+            bowlingGame.roll(2);
+            bowlingGame.roll(3);
+
+            bowlingGame.roll(2);
+            bowlingGame.roll(3);
+
+            bowlingGame.roll(2);
+            bowlingGame.roll(3);
+
+            bowlingGame.roll(2);
+            bowlingGame.roll(8);
+
+            bowlingGame.roll(5);
+
+            Assert.Equal(60, bowlingGame.Score());
+
+        }
+        [Fact]
+        public void TestForStrikeAtFrameTen()
+        {
+            Game bowlingGame = new Game();
+
+            bowlingGame.roll(1);
+            bowlingGame.roll(1);
+
+            bowlingGame.roll(1);
+            bowlingGame.roll(1);
+
+            bowlingGame.roll(1);
+            bowlingGame.roll(1);
+
+            bowlingGame.roll(1);
+            bowlingGame.roll(1);
+
+            bowlingGame.roll(1);
+            bowlingGame.roll(1);
+
+            bowlingGame.roll(1);
+            bowlingGame.roll(1);
+
+            bowlingGame.roll(1);
+            bowlingGame.roll(1);
+
+            bowlingGame.roll(1);
+            bowlingGame.roll(1);
+
+            bowlingGame.roll(1);
+            bowlingGame.roll(1);
+
+            bowlingGame.roll(10); //28
+
+            bowlingGame.roll(4);
+            bowlingGame.roll(6);
+
+            Assert.Equal(38, bowlingGame.Score());
+
         }
 
         [Fact]
