@@ -168,41 +168,42 @@ namespace DemoTesting
         {
             Game bowlingGame = new Game();
 
-            bowlingGame.roll(1);
-            bowlingGame.roll(1);
+            Assert.Throws<ArgumentException>(() =>
+            {
+                bowlingGame.roll(1);
+                bowlingGame.roll(1);
 
-            bowlingGame.roll(1);
-            bowlingGame.roll(1);
+                bowlingGame.roll(1);
+                bowlingGame.roll(1);
 
-            bowlingGame.roll(1);
-            bowlingGame.roll(1);
+                bowlingGame.roll(1);
+                bowlingGame.roll(1);
 
-            bowlingGame.roll(1);
-            bowlingGame.roll(1);
+                bowlingGame.roll(1);
+                bowlingGame.roll(1);
 
-            bowlingGame.roll(1);
-            bowlingGame.roll(1);
+                bowlingGame.roll(1);
+                bowlingGame.roll(1);
 
-            bowlingGame.roll(1);
-            bowlingGame.roll(1);
+                bowlingGame.roll(1);
+                bowlingGame.roll(1);
 
-            bowlingGame.roll(1);
-            bowlingGame.roll(1);
+                bowlingGame.roll(1);
+                bowlingGame.roll(1);
 
-            bowlingGame.roll(1);
-            bowlingGame.roll(1);
+                bowlingGame.roll(1);
+                bowlingGame.roll(1);
 
-            bowlingGame.roll(1);
-            bowlingGame.roll(1);
+                bowlingGame.roll(1);
+                bowlingGame.roll(1);
 
-            bowlingGame.roll(10); //28
+                bowlingGame.roll(10); 
 
-            bowlingGame.roll(4);
-            bowlingGame.roll(6);
+                bowlingGame.roll(4);
+                bowlingGame.roll(6);
 
-            bowlingGame.roll(5);
-            
-            Assert.Throws<ArgumentException>(() => bowlingGame.roll(5));
+                bowlingGame.roll(5);
+            });
 
         }
     }

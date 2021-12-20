@@ -29,7 +29,7 @@ namespace BowlingLab1
         public void roll(int pins)
         {
             pinsDown = pins;
-            if (pinsDown > pinsLeft || frames >= 11)
+            if (pinsDown > pinsLeft || frames >= 12)
             {
                 throw new ArgumentException();
             }
