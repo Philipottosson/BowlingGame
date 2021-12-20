@@ -24,9 +24,38 @@ namespace DemoTesting
         public void Roll_Game()
         {
             Game bowlingGame = new Game();
+
             bowlingGame.roll(2);
             bowlingGame.roll(3);
-            Assert.Equal(60,bowlingGame.Score());
+
+            bowlingGame.roll(2);
+            bowlingGame.roll(3);
+
+            bowlingGame.roll(2);
+            bowlingGame.roll(3);
+
+            bowlingGame.roll(2);
+            bowlingGame.roll(3);
+
+            bowlingGame.roll(2);
+            bowlingGame.roll(3);
+
+            bowlingGame.roll(2);
+            bowlingGame.roll(3);
+
+            bowlingGame.roll(2);
+            bowlingGame.roll(3);
+
+            bowlingGame.roll(2);
+            bowlingGame.roll(3);
+
+            bowlingGame.roll(2);
+            bowlingGame.roll(3);
+
+            bowlingGame.roll(2);
+            bowlingGame.roll(3);
+
+            Assert.Equal(50,bowlingGame.Score());
         }
 
         [Fact]
